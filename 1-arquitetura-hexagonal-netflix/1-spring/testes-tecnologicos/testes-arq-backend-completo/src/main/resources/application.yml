@@ -1,0 +1,9 @@
+server:
+  port: 8011
+  servlet:
+    context-path: /backend
+
+spring:
+  profiles:
+    default: local
+    active: local
