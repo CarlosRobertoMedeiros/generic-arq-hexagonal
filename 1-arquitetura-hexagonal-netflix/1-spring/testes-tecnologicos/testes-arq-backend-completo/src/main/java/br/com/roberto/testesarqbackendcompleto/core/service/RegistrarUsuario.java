@@ -22,7 +22,7 @@ public class RegistrarUsuario implements CasoDeUso<Usuario> {
     public void executar(Usuario command) {
         var  senhaCripto = provedorCriptografia.criptografar(command.getSenha());
         var usuarioOptional =
-                this.repositorioUsuario.buscarPorEmail(command.getEmail());
+                this.repositorioUsuario.buscarPorEmail(command);
 
         if (usuarioOptional.isPresent()){
             throw new RuntimeException("Usuario Já Existente");

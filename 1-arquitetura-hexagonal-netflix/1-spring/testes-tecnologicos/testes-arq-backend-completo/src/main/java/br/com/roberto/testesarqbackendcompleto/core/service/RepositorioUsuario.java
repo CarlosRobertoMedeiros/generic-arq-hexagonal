@@ -6,5 +6,5 @@ import java.util.Optional;
 
 public interface RepositorioUsuario {
     boolean inserir(Usuario usuario);
-    Optional<Usuario> buscarPorEmail(String email);
+    Optional<Usuario> buscarPorEmail(Usuario usuario);
 }

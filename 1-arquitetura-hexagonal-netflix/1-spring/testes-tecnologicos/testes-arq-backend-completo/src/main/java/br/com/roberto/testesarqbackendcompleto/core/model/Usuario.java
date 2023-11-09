@@ -1,19 +1,26 @@
 package br.com.roberto.testesarqbackendcompleto.core.model;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "TB_Usuario")
 public class Usuario {
 
-    private String id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String nome;
     private String email;
     private String senha;
 
+    public Usuario(){}
     public Usuario(String nome, String email, String senha) {
         this.nome = nome;
         this.email = email;
         this.senha = senha;
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 

@@ -4,3 +4,8 @@ spring:
     url: jdbc:postgresql://localhost:5437/testes
     username: dbtestesadmin
     password: dbtestespassword
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
