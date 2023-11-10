@@ -12,4 +12,9 @@ public class InverterSenhaCripto implements ProvedorCriptografia {
         StringBuilder reversed = new StringBuilder(texto).reverse();
         return reversed.toString();
     }
+
+    @Override
+    public Boolean comparar(String senha, String senhaCriptografada) {
+        return this.criptografar(senha).equals(senhaCriptografada);
+    }
 }

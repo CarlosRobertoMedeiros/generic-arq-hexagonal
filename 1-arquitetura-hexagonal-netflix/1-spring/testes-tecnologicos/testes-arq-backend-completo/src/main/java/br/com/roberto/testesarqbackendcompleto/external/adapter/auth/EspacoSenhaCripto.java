@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 //Na arquitetura Hexagonal essa classe é um adaptador (Adaptador implementação concreta)
 //O Adaptador não faz parte do coreBussiness da sua aplicação
 @Service
-@Primary
 public class EspacoSenhaCripto implements ProvedorCriptografia {
 
     @Override
@@ -20,5 +19,10 @@ public class EspacoSenhaCripto implements ProvedorCriptografia {
             }
         }
         return result.toString();
+    }
+
+    @Override
+    public Boolean comparar(String senha, String senhaCriptografada) {
+        return this.criptografar(senha).equals(senhaCriptografada);
     }
 }

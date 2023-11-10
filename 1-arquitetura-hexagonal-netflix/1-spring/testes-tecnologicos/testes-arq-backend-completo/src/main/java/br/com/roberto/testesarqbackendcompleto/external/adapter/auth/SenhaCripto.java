@@ -1,6 +1,7 @@
 package br.com.roberto.testesarqbackendcompleto.external.adapter.auth;
 
 import br.com.roberto.testesarqbackendcompleto.core.service.ProvedorCriptografia;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import java.security.MessageDigest;
@@ -11,6 +12,7 @@ import java.security.NoSuchAlgorithmException;
 //Na arquitetura Hexagonal essa classe é um adaptador (Adaptador implementação concreta)
 //O Adaptador não faz parte do coreBussiness da sua aplicação
 @Service
+@Primary
 public class SenhaCripto implements ProvedorCriptografia {
     @Override
     public String criptografar(String texto) {
@@ -38,5 +40,10 @@ public class SenhaCripto implements ProvedorCriptografia {
             throw new RuntimeException(e.getCause() + " " + e.getMessage());
         }
         return md5Hash;
+    }
+
+    @Override
+    public Boolean comparar(String senha, String senhaCriptografada) {
+        return this.criptografar(senha).equals(senhaCriptografada);
     }
 }
